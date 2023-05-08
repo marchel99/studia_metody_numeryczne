@@ -57,4 +57,13 @@ def oblicz_całki_i_błędy():
             dokladne = 0  # Wprowadź tutaj wartość dokładną, jeśli jest dostępna
 
             blad_prostokatow = abs(dokladne - pole_prostokatow)
+            blad_trapezow = abs(dokladne - pole_trapezow)
+            blad_parabol = abs(dokladne - pole_parabol)
 
+            print(f"Liczba podprzedziałów: {n}")
+            print(f"Metoda prostokątów: {pole_prostokatow}, Błąd: {blad_prostokatow}")
+            print(f"Metoda trapezów: {pole_trapezow}, Błąd: {blad_trapezow}")
+            print(f"Metoda parabol: {pole_parabol}, Błąd: {blad_parabol}")
+            print("-------------")
+
+oblicz_całki_i_błędy()
