@@ -50,6 +50,9 @@ def oblicz_całki_i_błędy():
 
         print(f"Całkowanie funkcji {funkcja.__name__} w przedziale [{a}, {b}]")
 
+
+
+
         for n in [2, 4, 8, 16]:
             pole_prostokatow = metoda_prostokatow(funkcja, a, b, n)
             pole_trapezow = metoda_trapezow(funkcja, a, b, n)
