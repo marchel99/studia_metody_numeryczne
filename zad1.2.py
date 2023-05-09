@@ -39,6 +39,8 @@ def rectangle_method(f, a, b, num_intervals):
 # Metoda trapezów
 
 
+
+
 def trapezoidal_method(f, a, b, num_intervals):
     h = (b - a) / num_intervals
     integral = (f(a) + f(b)) / 2
