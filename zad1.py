@@ -53,6 +53,8 @@ def oblicz_całki_i_błędy():
 
 
 
+
+
         for n in [2, 4, 8, 16]:
             pole_prostokatow = metoda_prostokatow(funkcja, a, b, n)
             pole_trapezow = metoda_trapezow(funkcja, a, b, n)
