@@ -1,34 +1,33 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
 def metoda_trapezow(f, a, b, n):
-    """
-    Oblicza przybliżoną wartość całki funkcji f na przedziale [a, b] za pomocą metody trapezów.
-
-    Parametry:
-    f (function): Funkcja, której całkę chcemy obliczyć.
-    a (float): Dolna granica przedziału całkowania.
-    b (float): Górna granica przedziału całkowania.
-    n (int): Liczba podprzedziałów.
-
-    Zwraca:
-    float: Przybliżona wartość całki.
-
-    """
-    h = (b - a) / n  # Szerokość każdego podprzedziału
-    suma = f(a) + f(b)  # Suma wartości funkcji na krańcach przedziału
-
+    h = (b - a) / n
+    suma = f(a) + f(b)
     for i in range(1, n):
-        x = a + i * h  # Wartość x w punkcie środkowym podprzedziału
-        suma += 2 * f(x)  # Dodanie wartości funkcji na punkcie środkowym
-
+        x = a + i * h
+        suma += 2 * f(x)
     wynik = (h / 2) * suma
     return wynik
 
 def funkcja(x):
-    return x**2  # Przykładowa funkcja, dla której obliczamy całkę
+    return x**2
 
-a = 0  # Dolna granica przedziału
-b = 1  # Górna granica przedziału
-n = 100  # Liczba podprzedziałów
+a = 0 #dolna granica całkowania
+b = 1 #górna granica całkowania
+n = 100
+
+x = np.linspace(a, b, 1000)  # Zakres x dla wykresu
+y = funkcja(x)  # Wartości y dla wykresu funkcji
 
 wynik = metoda_trapezow(funkcja, a, b, n)
 print("Przybliżona wartość całki:", wynik)
 
+plt.plot(x, y, label='funkcja(x)')
+plt.fill_between(x, y, where=(x >= a) & (x <= b), alpha=0.3)
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Wykres funkcji x^2')
+plt.legend()
+plt.grid(True)
+plt.show()
