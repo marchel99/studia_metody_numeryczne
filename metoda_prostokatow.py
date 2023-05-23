@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 def metoda_prostokatow(f, a, b, n):
-    """
+    """""
     Oblicza przybliżoną wartość całki funkcji f na przedziale [a, b] za pomocą metody prostokątów.
 
     Parametry:
