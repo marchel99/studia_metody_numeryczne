@@ -5,12 +5,13 @@ def metoda_prostokatow(f, a, b, n):
     """""
     Oblicza przybliżoną wartość całki funkcji f na przedziale [a, b] za pomocą metody prostokątów.
 
+    
     Parametry:
     f (function): Funkcja, której całkę chcemy obliczyć.
     a (float): Dolna granica przedziału całkowania.
     b (float): Górna granica przedziału całkowania.
     n (int): Liczba podprzedziałów.
-
+    n  (int): Liczba podprzedziałów.
     Zwraca:
     float: Przybliżona wartość całki.
     """
