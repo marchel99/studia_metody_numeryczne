@@ -1,3 +1,5 @@
+#'JetBrains Mono', 'Courier New', monospace
+
 import matplotlib.pyplot as plt
 import numpy as np
 
