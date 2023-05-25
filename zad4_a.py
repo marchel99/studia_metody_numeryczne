@@ -5,14 +5,13 @@ Dany jest układ równań:
 {
 𝑥1 = 3𝑥2 + 𝐼1
 𝑥2 = 𝑥13 − 𝐼2
-
+}
 gdzie x=[x1,x2]^T
 Punkt startowy: x0=[1,1]^T
 Dla kryterium stopu eps=0.001 (abserror).
-
 """
 
-
+# Import bibliotek
 import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
