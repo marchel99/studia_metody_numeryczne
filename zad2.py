@@ -5,7 +5,6 @@ a) Dla osób z parzystą cyfrą I2:
 f(x)=x2 –x -2-I1 w przedziale [-5,5],
 """
 
-
 import math
 import numpy as np
 import matplotlib.pyplot as plt
@@ -29,17 +28,13 @@ def golden_section_search(a, b, epsilon):
 
     return (a + b) / 2
 
-
 a = -5
 b = 5
 
-
 epsilon = 0.0001
-
 
 zero_point = golden_section_search(a, b, epsilon)
 zero_point_value = f(zero_point)
-
 
 x = np.linspace(-6, 6, 100)
 y = f(x)
