@@ -1,11 +1,3 @@
-"""
-Wyznacz miejsce zerowe, metoda Brenta (złoty podział z interpolacją f.
-kwadratową), wielomian 3. stopnia (dla różnych punktów startowych);
-
-f(x)=sin(x*I2) cos(x)/(1-x*x) w przedziale [-5,5],
-Dla kryterium stopu eps=0.001 (abserror).
-"""
-
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import brentq
@@ -60,7 +52,11 @@ else:
     print("Brak miejsc zerowych w danym przedziale.")
 
 # Dodatkowe informacje
-plt.text(-7, 9, 'Nr indeksu: 249842, I2=4', fontsize=12)
+plt.text(-7, 10, 'Nr indeksu: 249842, I2=4', fontsize=12)
+
+equation_text = r'$f(x) = \frac{{\sin(x^2) \cos(x)}}{{1 - x^2}}$'
+plt.text(-7, 9, equation_text, fontsize=12, )
+
 plt.text(-7, 8, 'Przedział: [-5, 5]', fontsize=12)
 if len(zero_points) > 0:
     plt.text(-7, 7, 'Miejsce zerowe: x = {:.4f}'.format(zero_points[0]), fontsize=12)
