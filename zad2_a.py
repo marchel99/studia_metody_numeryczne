@@ -2,8 +2,9 @@
 Znaleźć miejsce zerowe podanej funkcji w zadanym przedziale wykorzystując metodę
 złotego podziału
 a) Dla osób z parzystą cyfrą I2:
-f(x)=x2 –x -2-I1 w przedziale [-5,5],
+f(x)=x^2 – x - 2-I1 w przedziale [-5, 5]
 """
+
 import math
 import numpy as np
 import matplotlib.pyplot as plt
@@ -49,7 +50,7 @@ plt.legend()
 
 plt.text(-7, 52, 'Nr indeksu: 249842, I2=4', fontsize=12)
 plt.text(-7, 49, 'Przedział: [-5, 5]', fontsize=12)
-plt.text(-7, 46, 'Miejsce zerowe: x = {:.4f}'.format(zero_point), fontsize=12 )
+plt.text(-7, 46, 'Miejsce zerowe: x = {:.4f}'.format(zero_point), fontsize=12)
 
 plt.show()
 

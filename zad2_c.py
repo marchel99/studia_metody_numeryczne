@@ -1,8 +1,8 @@
 """
 Znaleźć miejsce zerowe podanej funkcji w zadanym przedziale wykorzystując metodę
-
-f(x)=sin(x*I2) cos(x)/(1-x*x) w przedziale [-5,5],
-Dla kryterium stopu eps=0.001 (abserror).
+złotego podziału
+f(x) = sin(x*I2) * cos(x) / (1 - x^2) w przedziale [-5, 5]
+Dla kryterium stopu eps=0.001 (abserror)
 """
 import numpy as np
 import matplotlib.pyplot as plt
@@ -59,5 +59,6 @@ plt.text(-7, 68, 'Miejsce zerowe: x = {:.4f}'.format(zero_point), fontsize=12)
 # Wyświetlenie wykresu
 plt.show()
 
+# Wydruk miejsca zerowego i wartości funkcji w miejscu zerowym
 print("Miejsce zerowe:", zero_point)
 print("Wartość funkcji w miejscu zerowym:", zero_point_value)
