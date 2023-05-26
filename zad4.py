@@ -74,4 +74,7 @@ plt.figtext(0.5, 0.05, equation_text_2, ha="center", fontsize=15, va="center")
 solution_text = f"Rozwiązanie: $x_{{1}}$={solution[0]:.3f}, $x_{{2}}$={solution[1]:.3f}"
 plt.figtext(0.5, 0.001, solution_text, ha="center", fontsize=15, va="center")
 
+
+plt.subplots_adjust(bottom=0.6)
+
 plt.show()
