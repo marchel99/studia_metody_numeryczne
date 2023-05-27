@@ -38,6 +38,7 @@ def f1(x1, x2):
 def f2(x1, x2):
     return x2 - x1**3 + 4
 
+#
 x = np.linspace(-5, 5, 100)
 
 plt.figure(figsize=(12, 6))
