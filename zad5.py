@@ -3,6 +3,7 @@ Zadanie 5. Optymalizacja
 Znaleźć minimalną wartość podanej funkcji wykorzystując algorytm mrówkowy,
 pszczółkowy lub genetyczny:
 
+
 𝑓(𝑎, 𝑏) = 𝐼2 ∗ (23 + 𝐼1 − 𝑎 ∙ 3
 𝑏
 )
