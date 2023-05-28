@@ -1,41 +1,29 @@
-import matplotlib.pyplot as plt
-import numpy as np
+def f(x):
+    return x**3 + x + 4
 
-def find_zeros(f, x_range):
-    x = np.linspace(x_range[0], x_range[1], 1000)
-    y = f(x)
+def bisection_method(f, a, b, tolerance=1e-6, max_iterations=100):
+    if f(a) * f(b) >= 0:
+        print("Nie można zagwarantować istnienia miejsca zerowego w danym przedziale.")
+        return None
 
-    # Znajdowanie indeksów, gdzie znaki funkcji się zmieniają (miejsca zerowe)
-    zero_indices = np.where(np.diff(np.sign(y)))[0]
-    zeros = x[zero_indices]
+    for _ in range(max_iterations):
+        c = (a + b) / 2
 
-    return zeros
+        if abs(f(c)) < tolerance:
+            return c
 
-def plot_function(f, x_range):
-    x = np.linspace(x_range[0], x_range[1], 1000)
-    y = f(x)
+        if f(a) * f(c) < 0:
+            b = c
+        else:
+            a = c
 
-    fig, ax = plt.subplots()
-    ax.plot(x, y)
+    print("Nie osiągnięto zbieżności po zadanej liczbie iteracji.")
+    return None
 
-    zeros = find_zeros(f, x_range)
-    ax.plot(zeros, f(zeros), 'ro', label='Miejsca zerowe')
+if __name__ == "__main__":
+    a = -5  # Początek przedziału
+    b = 5   # Koniec przedziału
 
-    ax.axhline(0, color='black', linewidth=0.5)
-    ax.axvline(0, color='black', linewidth=0.5)
-    ax.legend()
-    ax.set_xlabel('x')
-    ax.set_ylabel('f(x)')
-    ax.set_title('Wykres funkcji')
-
-    plt.show()
-
-if __name__ == '__main__':
-    # Funkcja f(x) = x^3 + x + 4
-    def funkcja(x):
-        return x**3 + x + 4
-
-    # Zakres osi x na wykresie
-    x_range = (-5, 5)
-
-    plot_function(funkcja, x_range)
+    zero = bisection_method(f, a, b)
+    if zero is not None:
+        print("Miejsce zerowe: x =", zero)
