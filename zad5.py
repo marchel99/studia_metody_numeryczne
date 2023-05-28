@@ -63,7 +63,7 @@ for _ in range(num_iterations):
     # Dodaj wartość do historii
     history.append(best_val)
 
-print(f"Najlepsze rozwiązanie: a={best_a}, b={best_b}, f(a, b)={best_val}")
+print(f"minimalna wartosc funkcji: a={best_a}, b={best_b}, f(a, b)={best_val}")
 
 # Wykres historii wartości funkcji celu
 plt.figure(figsize=(10, 6))
