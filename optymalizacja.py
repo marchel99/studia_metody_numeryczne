@@ -4,6 +4,7 @@ from mpl_toolkits.mplot3d import Axes3D
 from scipy.optimize import minimize
 
 
+
 # Definiowanie funkcji celu
 def func(x):
     return 9 + x[0]**2 + x[1]**2
