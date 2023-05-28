@@ -1,28 +1,27 @@
-import numpy as np
-import matplotlib.pyplot as plt
-from scipy.optimize import minimize_scalar
-
 def f(x):
     return x**3 + x + 4
 
-# Znalezienie punktu ekstremalnego
-result = minimize_scalar(f)
-extremum = result.x
+def f_prime(x):
+    return 3*x**2 + 1
 
-print("Potencjalny punkt ekstremalny:")
-print("x =", extremum)
+def newton_method(f, f_prime, x0, tol=1e-6, max_iter=100):
+    x = x0
+    iter_count = 0
 
-# Wygenerowanie wykresu
-x_vals = np.linspace(-10, 10, 1000)
-y_vals = f(x_vals)
+    while abs(f(x)) > tol and iter_count < max_iter:
+        x = x - f(x) / f_prime(x)
+        iter_count += 1
 
-plt.plot(x_vals, y_vals, label='f(x) = x^3 + x + 4')
-plt.scatter(extremum, f(extremum), color='red', label='Potencjalny punkt ekstremalny')
-plt.axhline(0, color='black', linewidth=0.5)
-plt.axvline(0, color='black', linewidth=0.5)
-plt.legend()
-plt.xlabel('x')
-plt.ylabel('f(x)')
-plt.title('Wykres funkcji')
-plt.grid(True)
-plt.show()
+    if abs(f(x)) <= tol:
+        return x
+    else:
+        return None
+
+# Wywołanie metody Newtona
+x0 = 0  # Punkt startowy
+root = newton_method(f, f_prime, x0)
+
+if root is not None:
+    print("Miejsce zerowe: x =", root)
+else:
+    print("Nie udało się znaleźć miejsca zerowego w określonym zakresie iteracji.")
