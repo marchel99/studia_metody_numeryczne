@@ -31,9 +31,9 @@ def plot_function(f, x_range):
     plt.show()
 
 if __name__ == '__main__':
-    # Funkcja, którą chcesz analizować - należy wprowadzić własną funkcję
+    # Funkcja f(x) = x^3 + x + 4
     def funkcja(x):
-        return x**3 +x+4
+        return x**3 + x + 4
 
     # Zakres osi x na wykresie
     x_range = (-5, 5)
