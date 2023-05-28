@@ -21,6 +21,7 @@ y = np.linspace(-10, 10, 100)
 X, Y = np.meshgrid(x, y)
 Z = func([X, Y])
 
+
 # Wizualizacja funkcji celu
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
