@@ -3,7 +3,8 @@ def f(x):
 
 def f_prime(x):
     return 3*x**2 + 1
-
+  
+  
 def newton_method(f, f_prime, x0, tol=1e-6, max_iter=100):
     x = x0
     iter_count = 0
