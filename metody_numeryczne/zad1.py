@@ -1,12 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.integrate import quad
+import scipy.integrate as spi
 
 # Definicja funkcji
-a, b, c, d, e, f, g = -2, -2, -2, -1, -2, 3, 3
-funkcje = [(lambda x: c*x**3 + b*x + a, -2, 2, "a"), 
-           (lambda x: d*np.cos(x/e), 0, np.pi/2, "b"),
-           (lambda x: np.log(x/f), 1, g, "c")]
+funkcje = [(lambda x: -2 * x**3 - 2 * x - 2, -2, 2, "-2x^3 - 2x - 2"),
+           (lambda x: -np.cos(-x/2), 0, np.pi/2, "-cos(-x/2)"),
+           (lambda x: np.log(x/3), 1, 3, "ln(x/3)")]
 
 # Metoda prostokątów
 def metoda_prostokatow(funkcja, a, b, n):
@@ -24,39 +23,22 @@ def metoda_simpsona(funkcja, a, b, n):
     return (1/3) * h * (funkcja(a) + funkcja(b) + 4 * sum([funkcja(a + i*h) for i in range(1, 2*n, 2)]) + 2 * sum([funkcja(a + i*h) for i in range(2, 2*n, 2)]))
 
 # Tworzenie wykresów
-n = 100
-x_values = np.linspace(-3, 3, 400)
+N = range(1, 101)
 
-for i, (funkcja, a, b, label) in enumerate(funkcje):
-    calka, _ = quad(funkcja, a, b)
-
-    # Metoda prostokątów
-    y_values = [metoda_prostokatow(funkcja, a, x, n) for x in x_values]
-    plt.figure()
-    plt.plot(x_values, y_values, label=f"Metoda prostokątów")
-    plt.xlabel('x')
-    plt.ylabel('Wartość całki')
-    plt.title(f'Rysunek {3*i+1}. Wykres dla przykładu {label} uzyskany przy wykorzystaniu metody prostokątów, przy n=100.')
-    plt.legend()
-    plt.grid()
+for funkcja, a, b, label in funkcje:
+    dokladna_wartosc, _ = spi.quad(funkcja, a, b)
     
-    # Metoda Simpsona
-    y_values = [metoda_simpsona(funkcja, a, x, n) for x in x_values]
-    plt.figure()
-    plt.plot(x_values, y_values, label=f"Metoda Simpsona")
-    plt.xlabel('x')
-    plt.ylabel('Wartość całki')
-    plt.title(f'Rysunek {3*i+2}. Wykres dla przykładu {label} uzyskany przy wykorzystaniu metody Simpsona, przy n=100.')
-    plt.legend()
-    plt.grid()
+    bledy_prostokatow = [abs(metoda_prostokatow(funkcja, a, b, n) - dokladna_wartosc) for n in N]
+    bledy_trapezow = [abs(metoda_trapezow(funkcja, a, b, n) - dokladna_wartosc) for n in N]
+    bledy_simpsona = [abs(metoda_simpsona(funkcja, a, b, n) - dokladna_wartosc) for n in N]
     
-    # Metoda trapezów
-    y_values = [metoda_trapezow(funkcja, a, x, n) for x in x_values]
     plt.figure()
-    plt.plot(x_values, y_values, label=f"Metoda trapezów")
-    plt.xlabel('x')
-    plt.ylabel('Wartość całki')
-    plt.title(f'Rysunek {3*i+3}. Wykres dla przykładu {label} uzyskany przy wykorzystaniu metody trapezów, przy n=100.')
+    plt.plot(N, bledy_prostokatow, label="Metoda prostokątów")
+    plt.plot(N, bledy_trapezow, label="Metoda trapezów")
+    plt.plot(N, bledy_simpsona, label="Metoda Simpsona")
+    plt.xlabel('Liczba podprzedziałów')
+    plt.ylabel('Błąd bezwzględny')
+    plt.title(f'Błąd bezwzględny metod całkowania dla funkcji {label}')
     plt.legend()
     plt.grid()
 
