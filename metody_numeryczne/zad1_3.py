@@ -8,7 +8,8 @@ def f1(x, a=-2, b=-2, c=-2):
     return c*x**3 + b*x + a
 
 def f2(x, d=-1, e=-2):
-    return d * math.cos(x/e)
+    return d * np.cos(x/e)
+
 
 def f3(x, f=3):
     return math.log(x/f)
