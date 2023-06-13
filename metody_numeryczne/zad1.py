@@ -7,7 +7,7 @@ def f1(x):
 def rectangle_method(f, range, n):
     h = (range[1] - range[0]) / n
     result = 0
-    for i in range(n):
+    for i in range(n+1):
         result += f(range[0] + h * (i + 0.5))
     result *= h
     return result
