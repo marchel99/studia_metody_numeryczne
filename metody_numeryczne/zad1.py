@@ -1,36 +1,37 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def f2(x):
-    return -np.cos(x/-2)
+def f3(x):
+    return np.log(x/3)
 
-def trapezoid_method(f, interval, n):
+def simpson_method(f, interval, n):
+    if n % 2 != 0:
+        n += 1
     h = (interval[1] - interval[0]) / n
-    result = 0.5 * (f(interval[0]) + f(interval[1]))
-    for i in range(1, n):
-        result += f(interval[0] + h * i)
-    result *= h
+    x = np.linspace(interval[0], interval[1], n+1)
+    y = f(x)
+    result = h / 3 * (y[0] + y[-1] + 4 * np.sum(y[1:-1:2]) + 2 * np.sum(y[2:-1:2]))
     return result
 
 # Definicja przedziału
-interval = [0, np.pi/2]
+interval = [1, 3]
 n = 100
 
 # Obliczenie wartości przybliżonej
 x_vals = np.linspace(interval[0], interval[1], 100)
-y_vals = f2(x_vals)
+y_vals = f3(x_vals)
 
-# Obliczenie próbek metody trapezów
+# Obliczenie próbek metody Simpsona
 x_samples = np.linspace(interval[0], interval[1], n)
-y_samples = f2(x_samples)
+y_samples = f3(x_samples)
 
 # Wykres
-plt.plot(x_vals, y_vals, label='Funkcja: -cos(x/(-2))')
-plt.scatter(x_samples, y_samples, color='red', label='Próbki (Metoda trapezów)')
+plt.plot(x_vals, y_vals, label='Funkcja: ln(x/3)')
+plt.scatter(x_samples, y_samples, color='green', label='Próbki (Metoda Simpsona)')
 plt.xlabel('x')
 plt.ylabel('y')
 plt.legend()
-plt.title('Wykres przybliżenia metody trapezów dla funkcji')
+plt.title('Wykres przybliżenia metody Simpsona dla funkcji')
 plt.grid(True)
 
 # Zaznaczanie obszarów między wykresem a osią x
