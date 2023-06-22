@@ -6,6 +6,7 @@ def f3(x):
 
 
 
+
 def simpson_method(f, interval, n):
     if n % 2 != 0:
         n += 1
