@@ -3,6 +3,7 @@ import math
 import scipy.integrate
 import matplotlib.pyplot as plt
 
+
 # Definicja funkcji
 def f1(x, a=-2, b=-2, c=-2):
     return c*x**3 + b*x + a
